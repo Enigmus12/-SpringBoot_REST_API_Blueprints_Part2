@@ -25,7 +25,6 @@ public class BlueprintsServices {
     @Autowired
     BlueprintsPersistence bpp = null;
 
-    // injected filter 
     @Autowired
     BlueprintFilter bpf = null;
 
@@ -34,18 +33,23 @@ public class BlueprintsServices {
     }
 
     public Set<Blueprint> getAllBlueprints() {
-        // we return all blueprints already filtered
         Set<Blueprint> all = bpp.getAllBlueprints();
         return bpf.filter(all);
     }
 
-    public Blueprint getBlueprint(String author,String name) throws BlueprintNotFoundException{
+    public Blueprint getBlueprint(String author,String name) throws BlueprintNotFoundException {
         Blueprint bp = bpp.getBlueprint(author, name);
         return bpf.filter(bp);
     }
 
-    public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
+    public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException {
         Set<Blueprint> s = bpp.getBlueprintsByAuthor(author);
         return bpf.filter(s);
     }
+
+    public void updateBlueprint(String author, String name, Blueprint newBp) throws BlueprintNotFoundException {
+        bpp.updateBlueprint(author, name, newBp);
+    }
+
 }
+

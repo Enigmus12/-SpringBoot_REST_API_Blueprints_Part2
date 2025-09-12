@@ -24,10 +24,11 @@ public class Blueprint {
     private String name=null;
             
     public Blueprint(String author,String name,Point[] pnts){
-        this.author=author;
-        this.name=name;
-        points=Arrays.asList(pnts);
+        this.author = author;
+        this.name = name;
+        this.points = new ArrayList<>(Arrays.asList(pnts));
     }
+
          
     public Blueprint(String author, String name){
         this.name=name;
